@@ -459,3 +459,47 @@ vector<IdentifierExpression*> Parser::parseFunctionParameters() {
 
     return identifiers;
 }
+
+WhileStatement* Parser::parseLoopStatement() {
+	WhileStatement* whileStatement = new WhileStatement;
+
+	if(currentToken->tokenType != TokenType::WHILE){
+		throw invalid_argument("parseLoopStatement: LOOP가 아닙니다.";
+	}
+	whileStatement->token = currentToken;
+	setNextToken();
+
+	if (currentToken->tokenType != TokenType::COLON) {
+		throw invalid_argument("parseIfExpression: COLON이 아닙니다.");
+	}
+	setNextToken();
+
+	skipSpaceToken();
+
+	if (currentToken->tokenType != TokenType::LPAREN) {
+		throw invalid_argument("parseIfExpression: LPAREN이 아닙니다.");
+	}
+	setNextToken();
+
+	whileStatement->condition = parseExpression(Precedence::LOWEST);
+
+	setNextToken();
+
+	if (currentToken->tokenType != TokenType::RPAREN) {
+		throw invalid_argument("parseIfExpression: RPAREN이 아닙니다.");
+	}
+	setNextToken();
+
+
+	if (currentToken->tokenType != TokenType::NEW_LINE) {
+		throw invalid_argument("parseIfExpression: NEW_LINE이 아닙니다.");
+	}
+	setNextToken();
+
+	whileStatement->loopBody = parseBlockStatement();
+
+	if (currentToken->tokenType != TokenType::ENDBLOCK) { // ENDBLOCK
+		throw invalid_argument("parseIfExpression: ENDBLOCK이 아닙니다.");
+	}
+	return whileStatement;
+}

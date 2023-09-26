@@ -103,6 +103,8 @@ private:
                 return "END_IF";
             case TokenType::ELSE:
                 return "ELSE";
+			case TokenType::WHILE:
+				return "WHILE";
         }
         return "??";
     }

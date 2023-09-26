@@ -40,4 +40,5 @@ add_executable(tolelom main.cpp
         ast/expressions/functionExpression.h
         ast/literals/functionLiteral.h
         code/code.h
+        ast/statements/whileStatement.h
 )

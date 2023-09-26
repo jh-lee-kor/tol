@@ -45,6 +45,8 @@ enum class TokenType {
     IF,             // 만약
     END_IF,         // 라면
     ELSE,           // 아니면
+	WHILE,			// 반복1
+	FOR,			// 반복2
 
 };
 
