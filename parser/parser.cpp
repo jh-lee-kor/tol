@@ -60,6 +60,12 @@ Statement* Parser::parseStatement() {
     else if (currentToken->tokenType == TokenType::IDENTIFIER) {
         return parseAssignStatement();
     }
+	else if (currentToken->tokenType == TokenType::WHILE){
+		return parseWhileStatement();
+	}
+	else if (currentToken->tokenType == TokenType::FOR){
+		return nullptr;
+	}
     else {
         return parseExpressionStatement();
     }
@@ -149,6 +155,7 @@ IntegerStatement* Parser::parseIntegerStatement() {
 //    setNextToken();
 //
 //    return integerStatement;
+	return nullptr;
 }
 
 Expression* Parser::parseIdentifierExpression() {
@@ -460,11 +467,11 @@ vector<IdentifierExpression*> Parser::parseFunctionParameters() {
     return identifiers;
 }
 
-WhileStatement* Parser::parseLoopStatement() {
+WhileStatement* Parser::parseWhileStatement() {
 	WhileStatement* whileStatement = new WhileStatement;
 
 	if(currentToken->tokenType != TokenType::WHILE){
-		throw invalid_argument("parseLoopStatement: LOOP가 아닙니다.";
+		throw invalid_argument("parseWhileStatement: LOOP가 아닙니다.");
 	}
 	whileStatement->token = currentToken;
 	setNextToken();

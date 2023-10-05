@@ -91,7 +91,7 @@ private:
     IntegerStatement* parseIntegerStatement();
     ExpressionStatement* parseExpressionStatement();
     BlockStatement* parseBlockStatement();
-	WhileStatement* parseLoopStatement();
+	WhileStatement* parseWhileStatement();
 
     Expression* parseIdentifierExpression();
     Expression* parseIntegerExpression();
