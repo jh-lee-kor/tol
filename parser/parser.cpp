@@ -510,3 +510,72 @@ WhileStatement* Parser::parseWhileStatement() {
 	}
 	return whileStatement;
 }
+
+ForStatement *Parser::parseForStatement() {
+    ForStatement* forStatement = new ForStatement;
+    if(currentToken->tokenType != TokenType::FOR){
+        throw invalid_argument("parseForStatement: FOR가 아닙니다.");
+    }
+    forStatement->token = currentToken;
+    setNextToken();
+
+    if (currentToken->tokenType != TokenType::COLON) {
+        throw invalid_argument("parseForStatement: COLON이 아닙니다.");
+    }
+    setNextToken();
+
+    skipSpaceToken();
+
+    if (currentToken->tokenType != TokenType::LPAREN) {
+        throw invalid_argument("parseForStatement: LPAREN이 아닙니다.");
+    }
+    setNextToken();
+
+    forStatement->initialization = parseStatement();
+
+    setNextToken();
+
+    if (currentToken->tokenType != TokenType::SEMICOLON) {
+        throw invalid_argument("parseForStatement: SEMICOLON이 아닙니다.");
+    }
+    setNextToken();
+
+    skipSpaceToken();
+
+    forStatement->condition = parseExpression(Precedence::LOWEST);
+
+    setNextToken();
+
+    if (currentToken->tokenType != TokenType::SEMICOLON) {
+        throw invalid_argument("parseForStatement: SEMICOLON이 아닙니다.");
+    }
+    setNextToken();
+
+    skipSpaceToken();
+
+    forStatement->incrementation = parseStatement();
+
+    setNextToken();
+
+    if (currentToken->tokenType != TokenType::RPAREN) {
+        throw invalid_argument("parseForStatement: RPAREN이 아닙니다.");
+    }
+    setNextToken();
+
+    if (currentToken->tokenType != TokenType::RPAREN) {
+        throw invalid_argument("parseForStatement: RPAREN이 아닙니다.");
+    }
+    setNextToken();
+
+    if (currentToken->tokenType != TokenType::NEW_LINE) {
+        throw invalid_argument("parseForStatement: NEW_LINE이 아닙니다.");
+    }
+    setNextToken();
+
+    forStatement->loopBody = parseBlockStatement();
+
+    if (currentToken->tokenType != TokenType::ENDBLOCK) { // ENDBLOCK
+        throw invalid_argument("parseForStatement: ENDBLOCK이 아닙니다.");
+    }
+    return forStatement;
+}

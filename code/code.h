@@ -7,10 +7,10 @@
 #include <vector>
 using namespace std;
 
-using Instruction = byte*;
-using Opcode = byte;
+using Instructions = vector<byte>;
+// Opcode = unsigned char;
 
-enum class Opcodes {
+enum class Opcode : unsigned char {
     OpConstant,
 
 };
@@ -18,39 +18,17 @@ enum class Opcodes {
 class Definition {
 public:
     string name;
-    int operandWidths;
+    vector<int> operandWidths;
 };
 
-map<Opcode, Definition> definitions;
+map<Opcode, Definition*> definitions = {
+        {Opcode::OpConstant, new Definition{"OpConstant", vector<int>{2}}},
+};
 
-Definition findDefinition(Opcode op) {
-    if (definitions.find(op) != definitions.end()) {
-        return definitions.find(op)->second;
-    }
-    throw invalid_argument("정의된 opcode가 없습니다.");
-}
+Definition* findDefinition(Opcode op);
 
+Instructions makeInstruction(Opcode op, const vector<byte>& operands);
 
-Instruction makeInstruction(Opcode op, const vector<byte>& operands) {
-    Definition definition = findDefinition(op);
-
-    int instructionLength = (int)operands.size() + 1;
-
-    Instruction instruction = new byte[instructionLength];
-    instruction[0] = op;
-
-    int offset = 1;
-    for (auto& operand : operands) {
-        int width = definition.operandWidths;
-        switch (width) {
-            case 2:
-                instruction[offset] = operand;
-                break;
-        }
-        offset += width;
-    }
-
-    return instruction;
-}
+vector<byte> readOperands(Definition* def, Instructions* ins);
 
 #endif //TOLELOM_CODE_H

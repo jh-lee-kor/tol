@@ -1,6 +1,8 @@
 #ifndef TOLELOM_OBJECT_H
 #define TOLELOM_OBJECT_H
 
+#include <string>
+
 enum class ObjectType {
     INTEGER,
     BOOLEAN,
@@ -11,7 +13,7 @@ class Object {
 public:
     ObjectType type{};
 
-    virtual string print() = 0;
+    virtual std::string print() = 0;
 };
 
 class Integer : public Object{
@@ -19,8 +21,8 @@ public:
     ObjectType type = ObjectType::INTEGER;
     long long value{};
 
-    string print() final {
-        return to_string(value);
+    std::string print() final {
+        return std::to_string(value);
     }
 };
 
@@ -32,8 +34,8 @@ public:
     Boolean() = default;
     explicit Boolean(bool value) : value(value) {};
 
-    string print() final {
-        return to_string(value);
+    std::string print() final {
+        return std::to_string(value);
     }
 };
 
@@ -42,7 +44,7 @@ public:
     ObjectType type = ObjectType::RETURN_VALUE_OBJECT;
     Object* value{};
 
-    string print() final {
+    std::string print() final {
         return value->print();
     }
 };

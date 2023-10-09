@@ -1,7 +1,3 @@
-//
-// Created by 이장호 on 2023/09/26.
-//
-
 #ifndef TOLELOM_WHILESTATEMENT_H
 #define TOLELOM_WHILESTATEMENT_H
 

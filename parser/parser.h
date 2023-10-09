@@ -21,6 +21,7 @@
 #include "../ast/statements/expressionStatement.h"
 #include "../ast/statements/blockStatement.h"
 #include "../ast/statements/whileStatement.h"
+#include "../ast/statements/forStatement.h"
 
 #include "../ast/literals/integerLiteral.h"
 #include "../ast/literals/booleanLiteral.h"
@@ -92,6 +93,7 @@ private:
     ExpressionStatement* parseExpressionStatement();
     BlockStatement* parseBlockStatement();
 	WhileStatement* parseWhileStatement();
+    ForStatement *parseForStatement();
 
     Expression* parseIdentifierExpression();
     Expression* parseIntegerExpression();
@@ -106,6 +108,8 @@ private:
     Expression* parseFunctionLiteral();
 
     vector<IdentifierExpression*> parseFunctionParameters();
+
+
 };
 
 

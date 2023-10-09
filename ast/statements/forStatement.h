@@ -1,9 +1,5 @@
-//
-// Created by 이장호 on 2023/09/26.
-//
-
-#ifndef TOLELOM_WHILESTATEMENT_H
-#define TOLELOM_WHILESTATEMENT_H
+#ifndef TOLELOM_FORSTATEMENT_H
+#define TOLELOM_FORSTATEMENT_H
 
 #include "statement.h"
 #include "blockStatement.h"
@@ -23,4 +19,4 @@ public:
 	}
 };
 
-#endif //TOLELOM_WHILESTATEMENT_H
+#endif //TOLELOM_FORSTATEMENT_H

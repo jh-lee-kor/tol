@@ -42,4 +42,9 @@ add_executable(tolelom main.cpp
         code/code.h
         ast/statements/whileStatement.h
         ast/statements/forStatement.h
+        code/code.cpp
+        compiler/compiler.h
+        compiler/compiler.cpp
+        vm/vm.h
+        vm/vm.cpp
 )
