@@ -3,7 +3,6 @@
 
 #include <vector>
 #include "../object/object.h"
-#include "../code/code.h"
 #include "../compiler/compiler.h"
 
 using namespace std;

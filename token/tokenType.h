@@ -15,6 +15,7 @@ enum class TokenType {
 
 
     COLON,          // :
+	SEMICOLON,		// ;
     RIGHTARROW,     // ->
     COMMA,          // ,
     // 기호

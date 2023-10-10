@@ -18,7 +18,9 @@ void VM::run() { // ??
         Opcode op = Opcode(instructions[ip]);
         switch(op){
             case Opcode::OpConstant:
-                auto constIndex = 0; // 여기서 멈춤
+				byte h, l;
+				h = this->instructions[ip+1];
+				l = this->instructions[ip+2];
         }
     }
 }

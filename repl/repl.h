@@ -105,6 +105,10 @@ private:
                 return "ELSE";
 			case TokenType::WHILE:
 				return "WHILE";
+			case TokenType::FOR:
+				return "FOR";
+			case TokenType::SEMICOLON:
+				return "SEMICOLON";
         }
         return "??";
     }

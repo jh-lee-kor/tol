@@ -21,9 +21,7 @@ public:
     vector<int> operandWidths;
 };
 
-map<Opcode, Definition*> definitions = {
-        {Opcode::OpConstant, new Definition{"OpConstant", vector<int>{2}}},
-};
+extern map<Opcode, Definition*> definitions;
 
 Definition* findDefinition(Opcode op);
 

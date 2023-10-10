@@ -1,5 +1,8 @@
 #include "code.h"
 
+map<Opcode, Definition*> definitions  = {
+		{Opcode::OpConstant, new Definition{"OpConstant", vector<int>{2}}},
+};
 
 Instructions makeInstruction(Opcode op, const vector<byte> &operands) {
     Definition* definition = findDefinition(op);
